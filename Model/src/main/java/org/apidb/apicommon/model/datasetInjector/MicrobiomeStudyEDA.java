@@ -21,7 +21,7 @@ public class MicrobiomeStudyEDA extends DatasetInjector {
         String presenterId = getPropValue("presenterId");
         String cardQuestions = "UNION select '" + presenterId + "' as dataset_presenter_id, 'cardQuestions' as property, '{ ";
         //cardQuestions = cardQuestions + getCardQuestionString();
-        cardQuestions = cardQuestions + " }' as value from dual";
+        cardQuestions = cardQuestions + " }' as value";
         //System.err.println("cardQuestionsSql=" + cardQuestions);
         setPropValue("cardQuestionsSql",cardQuestions);
         injectTemplate("injectDatasetQuestions");
@@ -30,7 +30,7 @@ public class MicrobiomeStudyEDA extends DatasetInjector {
     private void injectProjectAvailability() {
         String presenterId = getPropValue("presenterId");
         String subProjectName = getPropValue("subProjectName");
-        String projectAvailability = "UNION select '" + presenterId + "' as dataset_presenter_id, 'projectAvailability' as property, '[\"" + subProjectName +  "\",\"AllClinEpiDB\"" + (getPropValueAsBoolean("isPublic") ? ",\"ClinEpiDB\"" : "") + "]' as value from dual";
+        String projectAvailability = "UNION select '" + presenterId + "' as dataset_presenter_id, 'projectAvailability' as property, '[\"" + subProjectName +  "\",\"AllClinEpiDB\"" + (getPropValueAsBoolean("isPublic") ? ",\"ClinEpiDB\"" : "") + "]' as value";
         setPropValue("projectAvailabilitySql",projectAvailability);
         injectTemplate("injectProjectAvailability");
     }
